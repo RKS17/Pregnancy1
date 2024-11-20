@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-pja%1&p%9a6=vj57jam&1yao^uul(aa4b^c4l#53#-=4ii#u)x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.18.10', '127.0.0.1', 'pregnancy.pythonanywhere.com',
+ALLOWED_HOSTS = ['192.168.18.10', '127.0.0.1', 'pregnancycare.pythonanywhere.com',
                  '8847-2405-acc0-1304-6950-98bf-37e-89c9-5a6b.ngrok-free.app']
 
 

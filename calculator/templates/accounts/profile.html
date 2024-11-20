@@ -1,0 +1,95 @@
+<!-- templates/registration/profile.html -->
+{% extends "base.html" %} {% block content %} {% load static %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
+<style>
+  /* styles.css */
+  .profile-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .profile-header h1 {
+    font-size: 2em;
+    color: #333;
+  }
+
+  .profile-image {
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .profile-details {
+    margin-top: 20px;
+    font-size: 1.1em;
+  }
+
+  .profile-details p {
+    margin: 10px 0;
+    color: #555;
+  }
+
+  .profile-buttons {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .profile-buttons a {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+  }
+
+  .profile-buttons a:hover {
+    background-color: #0056b3;
+  }
+
+  .profile-buttons a.logout {
+    background-color: #dc3545;
+  }
+
+  .profile-buttons a.logout:hover {
+    background-color: #c82333;
+  }
+</style>
+<h1>My Profile</h1>
+
+<!-- profile/view_profile.html -->
+<h1>{{ profile.user.username }}'s Profile</h1>
+<p>Full Name: {{ profile.full_name }}</p>
+<p>Phone Number: {{ profile.phone_number }}</p>
+{% if profile.profile_image %}
+<img
+  src="{{ profile.profile_image.url }}"
+  alt="Profile Image"
+  style="width: 150px; height: 150px"
+/>
+{% endif %}
+<a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+
+{% comment %}
+<p><a href="{% url 'change_password' %}">Change Password</a></p>
+{% endcomment %}
+<a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+<a href="{% url 'logout' %}">Logout</a>
+{% endblock %}

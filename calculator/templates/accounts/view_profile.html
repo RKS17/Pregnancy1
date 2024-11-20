@@ -1,0 +1,80 @@
+<!-- templates/profiles/view_profile.html -->
+
+{% extends "base.html" %} {% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          {% if profile.profile_image %}
+          <img
+            src="{{ profile.profile_image.url }}"
+            alt="Profile Image"
+            class="rounded-circle"
+            width="150"
+            height="150"
+          />
+          {% else %}
+          <img
+            src="https://via.placeholder.com/150"
+            alt="Default Profile Image"
+            class="rounded-circle"
+            width="150"
+            height="150"
+          />
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Profile Details</h4>
+          <hr />
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>Full Name:</strong></p>
+              <p>{{ profile.full_name }}</p>
+            </div>
+            <div class="col-md-6">
+              <p><strong>Phone Number:</strong></p>
+              <p>{{ profile.phone_number }}</p>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>Joined On:</strong></p>
+              <p>{{ user.date_joined|date:"F j, Y" }}</p>
+              <!-- Display when the user joined -->
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <a href="{% url 'edit_profile' %}" class="btn btn-primary w-100"
+                >Edit Profile</a
+              >
+            </div>
+            <div class="col-md-6">
+              <a
+                href="{% url 'change_password' %}"
+                class="btn btn-secondary w-100"
+                >Change Password</a
+              >
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <a href="{% url 'logout' %}" class="btn btn-danger w-100"
+                >Logout</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,171 @@
+{% extends 'base_login_register.html' %}{% load static %} {% block content %}
+<style>
+  /* General form styling */
+  .container {
+    margin-top: 50px;
+    padding: 20px;
+  }
+
+  .card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-header {
+    border-bottom: none;
+    padding: 15px 20px;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  /* Form Fields */
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  /* Submit button */
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  /* Link Styling */
+  .text-info {
+    color: #17a2b8 !important;
+  }
+
+  .text-info:hover {
+    text-decoration: underline;
+  }
+
+  /* Card Headers */
+  .card-header.bg-primary {
+    background-color: #007bff !important;
+  }
+
+  .card-header.bg-warning {
+    background-color: #ffc107 !important;
+  }
+
+  /* Custom button for reset password */
+  .btn-warning {
+    background-color: #ffc107 !important;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .btn-warning:hover {
+    background-color: #e0a800 !important;
+  }
+
+  /* Align forgot password and signup links */
+  .text-center p {
+    margin: 10px 0;
+  }
+
+  /* Avatar for login page (if you wish to add an image) */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+  }
+
+  /* For smaller screens */
+  @media screen and (max-width: 600px) {
+    .card {
+      margin: 10px;
+    }
+
+    button[type="submit"] {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  /* Ensure the image is responsive */
+  .image-container img {
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 0; /* Add space between the image and navbar */
+  }
+
+  /* Optional: You can also style the navbar if needed */
+  .navbar {
+    position: relative;
+    bottom: 0; /* Adjust if necessary */
+  }
+</style>
+<div class="image-container d-lg-none text-center">
+  <img
+    src="{% static 'images/pragnancy.jpg' %}"
+    alt="Description of image"
+    class="img-fluid"
+  />
+  <h1><strong>Welcome to Pregnancy Care</strong></h1>
+</div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>Log In</h4>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %} {{ form.as_p }}
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-sign-in-alt"></i> Log In
+              </button>
+            </div>
+          </form>
+          <div class="text-center">
+            <p>
+              Don't have an account?
+              <a href="{% url 'register' %}" class="text-info">Sign Up</a>
+            </p>
+            <p class="privacy-text">
+              By creating an account, you give us permission to securely backup
+              your data, your baby’s birthdate, and any other data you upload.
+              By continuing, you agree to the <a href="#">privacy policy</a> and
+              <a href="#">terms of use</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
